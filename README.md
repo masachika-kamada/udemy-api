@@ -1,8 +1,7 @@
 # Rest API tutorial
 
-Udemy course URL: <https://www.udemy.com/course/rest-api-flask-and-python/>
-
-Interact with and test REST API: use insomnia
+* Udemy course URL: <https://www.udemy.com/course/rest-api-flask-and-python/>
+* GitHub: <https://github.com/tecladocode/rest-apis-flask-python>
 
 ## Docker
 
@@ -20,6 +19,7 @@ docker-compose up --build --force-recreate --no-deps web
 
 ## Notes
 
+* Interact with and test REST API: use insomnia
 * `.flaskenv` file is used to set environment variables for Flask
 * When API receives a request from a client, marshmallow is used to validate the request data<br>
     **Before marshmallow**
