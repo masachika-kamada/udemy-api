@@ -10,6 +10,7 @@ from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
 from resources.user import blp as UserBlueprint
+from flask_migrate import Migrate
 
 
 def create_app(db_uri=None):
@@ -26,7 +27,7 @@ def create_app(db_uri=None):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["PROPAGATE_EXCEPTIONS"] = True
     db.init_app(app)
-
+    migrate = Migrate(app, db)
     api = Api(app)
 
     # app.config["JWT_SECRET_KEY"] = secrets.SystemRandom().getrandbits(128)
@@ -80,9 +81,6 @@ def create_app(db_uri=None):
             jsonify({"description": "The token has been revoked.", "error": "token_revoked"}),
             401,
         )
-
-    with app.app_context():
-        db.create_all()
 
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(StoreBlueprint)
